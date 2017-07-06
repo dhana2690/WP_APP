@@ -1,0 +1,3 @@
+RewriteEngine on
+
+RewriteRule ^(.*)$ http://www.gearfire.com/maintenance.html [R=permanent,L]

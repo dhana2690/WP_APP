@@ -1,0 +1,33 @@
+RewriteEngine on
+#RewriteRule ^(.*)$ http://dev.gearfire.com/maintenance.html [R=307,L]
+#RewriteCond %{HTTP_HOST} ^(www\.)?testdealer4.gearfire\.com$ [NC]
+#RewriteRule ^(.*)$ http://test.gearfire.com/$1 [L,R=301]
+#RewriteCond %{HTTP_HOST} ^(www\.)?testdealer5.gearfire\.com$ [NC]
+#RewriteRule ^(.*)$ http://test.gearfire.com/$1 [L,R=301]
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{REQUEST_URI}  !^/server-status
+RewriteRule ^(.*)$ /urlalias.php/$1/%{QUERY_STRING} [L]
+
+RewriteCond %{HTTPS} =on
+RewriteRule ^(.*)$ - [env=ps:https]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ - [env=ps:http]
+
+RewriteCond %{REQUEST_URI} ^/sales/whynfdn\.php [NC]
+RewriteRule ^(.*)$ %{ENV:ps}://gogearfire.com [L,R=301]
+RewriteCond %{REQUEST_URI} ^/sales/ [NC]
+RewriteRule ^(.*)$ %{ENV:ps}://gogearfire.com/sign-up/ [L,R=301]
+
+
+<Files  ~ "\.inc$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files  ~ "\.ini$">
+  Order allow,deny
+  Deny from all
+</Files>
+

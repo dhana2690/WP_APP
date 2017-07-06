@@ -1,0 +1,42 @@
+RewriteEngine on
+
+
+
+RewriteCond %{HTTP_HOST} ^(www\.)?testdealer5.gearfire\.com$ [NC]
+RewriteRule ^(.*)$ https://test.gearfire.com/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^(www\.)?testdealer6.gearfire\.com$ [NC]
+RewriteRule ^(.*)$ https://test.gearfire.com/$1 [L,R=301]
+
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{REQUEST_URI}  !^/server-status
+RewriteRule ^(.*)$ /urlalias.php/$1/%{QUERY_STRING} [L]
+#RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+#RewriteCond %{DOCUMENT_ROOT}/maintenance.enable -f
+#RewriteCond %{SCRIPT_FILENAME} !maintenanc.html
+#ewriteRule ^.*$ /maintenance.html [R=503,L
+#rrorDocument 503 /maintenance.html
+
+
+
+
+
+
+
+Order Deny,Allow
+Deny from 23.104.156.139
+#Deny from 205.164.23.150
+Deny from  23.229.68.124
+Deny from 23.104.156.224
+#Deny from 95.128.129.22
+Deny from 205.185.230.58
+Deny from 167.160.121.210
+Deny from 8.29.122.142
+Deny from 50.118.140.127
+Deny from 23.229.68.118
+Deny from 23.19.37.81
+Deny from 173.208.231.244
+Deny from  107.181.76.101
+Deny from 50.118.140.194
+#Deny from 182.72.236.105
